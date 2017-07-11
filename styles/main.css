@@ -1,0 +1,40 @@
+#wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1078px;
+  margin: 0 auto;
+}
+
+h1 {
+  position: absolute;
+  top: 500px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  text-align: center;
+  width: 960px;
+}
+
+.map-wrapper {
+  position: fixed;
+}
+
+canvas {
+    width: 100% !important;
+    height: auto;
+    padding: 100px;
+    box-sizing: border-box;
+}
+
+h1.map-country-title_main {
+    position: absolute;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 6vw;
+    text-align: center;
+    width: 100%;
+    top: 65%;
+    left: 50%;
+    transform-origin: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.7;
+}
+
