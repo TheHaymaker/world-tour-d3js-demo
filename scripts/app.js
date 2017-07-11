@@ -33,8 +33,8 @@ var width = 960,
 
   function drawMap() {
     queue()
-      .defer(d3.json, "/scripts/data/world-110m.json")
-      .defer(d3.csv, "/scripts/data/world-country-names-data-data.csv")
+      .defer(d3.json, "https://thehaymaker.github.io/world-tour-d3js-demo/scripts/data/world-110m.json")
+      .defer(d3.csv, "https://thehaymaker.github.io/world-tour-d3js-demo/scripts/data/world-country-names-data-data.csv")
       .await(APP.TRANSFORM);
   }
 
