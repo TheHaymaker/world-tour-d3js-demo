@@ -93,7 +93,7 @@ li.map-key-list-item:hover:after {
     border-radius: 0px;
 }
 
-.active:after {
+li.map-key-list-item.active:after {
   background-color: #e91e63;
   border-radius: 0px;
 }

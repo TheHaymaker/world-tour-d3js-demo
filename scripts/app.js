@@ -4,6 +4,7 @@ APP.countries = null;
 APP.globe = null;
 APP.land = null;
 APP.borders = null;
+APP.keyItems = null;
 
 APP.countryStatus = false;
 
@@ -88,7 +89,14 @@ var width = 960,
                   // console.log( countryRightNow.offered_courses );
                   countryCourseStatus = countryRightNow.offered_courses;
                   APP.countryStatus = true;
+
+                  removeActiveClassesFromList();
+
+                  APP.keyItems[ i % n ].classList.add('active');
+
+
                   return countryName;
+
                 } else {
                   APP.countryStatus = false;
                 }
@@ -239,18 +247,24 @@ function createMapKey(array) {
 
 function createKeyListeners(array) {
   var listItems = document.querySelectorAll('.map-key-list-item');
-  var itemArray = [];
+  APP.keyItems = [];
 
   // push DOM nodes into Array to take advantage of native Array
   for (var i = 0; i < listItems.length; i++) {
-    itemArray.push( listItems[i] );
+    APP.keyItems.push( listItems[i] );
   }
 
-  itemArray.forEach(function(node){
+  APP.keyItems.forEach(function(node){
 
     node.addEventListener("click", function(e){
 
+      // remove all the .active's
+     removeActiveClassesFromList();
+      // grab the iterator value and use it
+      // to render the appropriate country
+      // from the country list global
       var num = this.dataset.iterator;
+      this.classList.add('active');
       drawCountry( APP.countries[num] );
 
     });
@@ -259,6 +273,14 @@ function createKeyListeners(array) {
 
 
 };
+
+function removeActiveClassesFromList(){
+   var listItems = document.querySelectorAll('.map-key-list-item');
+
+  for (var i = 0; i < listItems.length; i++) {
+    listItems[i].classList.remove('active');
+  }
+}
 
 
 
