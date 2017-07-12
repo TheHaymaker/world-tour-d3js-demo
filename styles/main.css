@@ -38,7 +38,6 @@ h1.map-country-title_main {
             transform-origin: 50%;
     -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
-    opacity: 0.7;
 }
 
 .map-scroll-hide {
@@ -66,9 +65,10 @@ ul.map-key-list {
 
 li.map-key-list-item {
     font-size: 12px;
-    line-height: 22px;
-    position: relative
-    ;
+    line-height: 12px;
+    position: relative;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 li.map-key-list-item:after {

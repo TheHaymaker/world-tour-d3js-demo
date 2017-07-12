@@ -26,6 +26,11 @@ var width = 960,
 
   var c = canvas.node().getContext("2d");
 
+var grd = c.createLinearGradient(0,0,0,960);
+  grd.addColorStop(0,"#6a82f9");
+  // grd.addColorStop(1,"#041774");
+  grd.addColorStop(1,"whitesmoke");
+
   var path = d3.geo.path()
       .projection(projection)
       .context(c);
@@ -76,7 +81,7 @@ var width = 960,
     (function transition() {
       if( APP.countries[ (i + 1) % n] ) {
         d3.transition()
-            .duration(2500)
+            .duration(1750)
             .each("start", function() {
               // console.log( topojson.feature(world, world.objects.countries).features );
               var countryName, countryProject, countryCourseStatus;
@@ -121,11 +126,11 @@ var width = 960,
                 return function(t) {
                   projection.rotate(r(t));
                   c.clearRect(0, 0, width, height);
-                  c.strokeStyle = "#000", c.lineWidth = 5, c.beginPath(), path(APP.globe), c.stroke(), c.fillStyle = '#6a82f9'; c.fill();
-                  c.fillStyle = "#ccc", c.beginPath(), path(APP.land), c.fill();
+                  c.strokeStyle = grd, c.lineWidth = 1, c.beginPath(), path(APP.globe), c.stroke(), c.fillStyle = grd, c.fill();
+                  c.fillStyle = "rgba(9,9,9,0.53)", c.beginPath(), path(APP.land), c.fill();
                   c.fillStyle = "#ebaf06", c.beginPath(), path(countries[i]), c.fill();
-                  c.strokeStyle = "#6a82f9", c.lineWidth = 1, c.beginPath(), path(APP.borders), c.stroke();
-                  c.strokeStyle = "#000", c.lineWidth = 5, c.beginPath(), path(APP.globe), c.stroke();
+                   c.strokeStyle = "rgba(245,245,245,0.53)", c.lineWidth = 1, c.beginPath(), path(APP.borders), c.stroke();
+                  // c.strokeStyle = grd, c.lineWidth = 1, c.beginPath(), path(APP.globe), c.stroke();
                 }
               };
             })
@@ -140,7 +145,7 @@ var width = 960,
             } else if (APP.counter < cLength) {
               APP.counter++;
               // console.log("_____HELL YEAH_____");
-              return 2000;
+              return 3500;
             }
           })
           .transition()
@@ -165,7 +170,7 @@ var width = 960,
   function drawCountry(country) {
   (function transition() {
   d3.transition()
-  .duration(2500)
+  .duration(1750)
   .each("start", function() {
     // console.log( topojson.feature(world, world.objects.countries).features );
     var countryName, countryProject, countryCourseStatus;
@@ -202,12 +207,11 @@ var width = 960,
       return function(t) {
         projection.rotate(r(t));
         c.clearRect(0, 0, width, height);
-        c.strokeStyle = "#000", c.lineWidth = 5, c.beginPath(), path(APP.globe), c.stroke(), c.fillStyle = '#6a82f9';
-        c.fill();
-        c.fillStyle = "#ccc", c.beginPath(), path(APP.land), c.fill();
+        c.strokeStyle = grd, c.lineWidth = 1, c.beginPath(), path(APP.globe), c.stroke(), c.fillStyle = grd, c.fill();
+        c.fillStyle = "rgba(9,9,9,0.53)", c.beginPath(), path(APP.land), c.fill();
         c.fillStyle = "#ebaf06", c.beginPath(), path(country), c.fill();
-        c.strokeStyle = "#6a82f9", c.lineWidth = 1, c.beginPath(), path(APP.borders), c.stroke();
-        c.strokeStyle = "#000", c.lineWidth = 5, c.beginPath(), path(APP.globe), c.stroke();
+         c.strokeStyle = "rgba(245,245,245,0.53)", c.lineWidth = 1, c.beginPath(), path(APP.borders), c.stroke();
+        // c.strokeStyle = grd, c.lineWidth = 1, c.beginPath(), path(APP.globe), c.stroke();
     };
   })
   .transition()
